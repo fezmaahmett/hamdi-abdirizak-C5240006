@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Music Playlist Organizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎵 Music Playlist Organizer</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="help">Help</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="search-section">
+                <h2>Search for Songs</h2>
+                <form id="search-form">
+                    <input type="text" id="search-query" placeholder="Search for songs, artists, or albums..." required>
+                    <button type="submit">Search Music</button>
+                </form>
+                <div id="search-results" class="results-container"></div>
+            </div>
+
+            <div class="playlist-section">
+                <div class="section-header">
+                    <h2>My Playlist <span id="playlist-count">(0)</span></h2>
+                    <button id="share-playlist-btn" class="share-btn">📤 Share Playlist</button>
+                </div>
+                <div id="playlist-container" class="playlist-container">
+                    <div class="empty-playlist">
+                        <p>Your playlist is empty. Search for songs above to add them!</p>
+                        <div class="empty-icon">♫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="music-player">
+                <div class="player-header">
+                    <h3>Now Playing</h3>
+                    <div id="current-song-info">No song selected</div>
+                </div>
+                <div class="player-controls">
+                    <button id="prev-btn" class="control-btn">⏮</button>
+                    <button id="play-pause-btn" class="control-btn play-btn">▶</button>
+                    <button id="next-btn" class="control-btn">⏭</button>
+                </div>
+                <div class="player-progress">
+                    <div id="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="current-time">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <audio id="audio-element"></audio>
+            </div>
+        </section>
+
+        <!-- Help Page -->
+        <section id="help-page" class="page">
+            <h2>Help & Instructions</h2>
+            <div class="help-section">
+                <h3>How to Use the Music Playlist Organizer</h3>
+                <ol>
+                    <li><strong>Search for Songs:</strong> Use the search bar on the Home page to find songs from our music library.</li>
+                    <li><strong>Add to Playlist:</strong> Click the "+" button on any search result to add a song to your playlist.</li>
+                    <li><strong>Play Music:</strong> Click on any song in your playlist to start playing it.</li>
+                    <li><strong>Player Controls:</strong> Use the play/pause, previous, and next buttons to control playback.</li>
+                    <li><strong>Edit Songs:</strong> Click the edit icon (✎) on any playlist item to modify its details.</li>
+                    <li><strong>Delete Songs:</strong> Click the delete icon (🗑️) to remove a song from your playlist.</li>
+                    <li><strong>Share Playlist:</strong> Click the "Share Playlist" button to generate a shareable link.</li>
+                </ol>
+            </div>
+            <div class="help-section">
+                <h3>Form Validation Rules</h3>
+                <ul>
+                    <li>All fields marked with * are required</li>
+                    <li>Song duration must be in MM:SS format (e.g., 3:45)</li>
+                    <li>Audio URL must be a valid web address starting with http:// or https://</li>
+                    <li>Song title must be at least 2 characters long</li>
+                    <li>Artist name must be at least 2 characters long</li>
+                </ul>
+            </div>
+            <div class="help-section">
+                <h3>Troubleshooting</h3>
+                <p>If you encounter issues:</p>
+                <ul>
+                    <li>Clear your browser cache and refresh the page</li>
+                    <li>Ensure you have a stable internet connection for searching songs</li>
+                    <li>Check that your browser supports the HTML5 audio element</li>
+                    <li>For sharing issues, ensure you're not in private/incognito mode</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about-page" class="page">
+            <h2>About Music Playlist Organizer</h2>
+            <div class="about-content">
+                <p>This application was created to help music lovers organize and enjoy their favorite songs in custom playlists. The intuitive interface allows you to search for songs, create personalized playlists, and enjoy seamless playback.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🎵 Music Search</h3>
+                        <p>Find your favorite songs from our extensive library with our powerful search feature.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✏️ Edit & Manage</h3>
+                        <p>Easily edit song details, reorder your playlist, or remove songs you no longer enjoy.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📤 Share Playlists</h3>
+                        <p>Share your carefully curated playlists with friends via a simple shareable link.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Responsive Design</h3>
+                        <p>Enjoy a seamless experience on desktop, tablet, and mobile devices.</p>
+                    </div>
+                </div>
+                
+                <div class="student-details">
+                    <h3>Student Information</h3>
+                    <p><strong>Name:</strong> Hamdi Cabdrizaak Maxamuud</p>
+                    <p><strong>ID:</strong> C5240006</p>
+                    <p><strong>Class Name:</strong> CM241</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit Song Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Song Details</h2>
+            <form id="edit-song-form">
+                <input type="hidden" id="edit-song-index">
+                <div class="form-group">
+                    <label for="edit-title">Song Title *</label>
+                    <input type="text" id="edit-title" required>
+                    <div class="error-message" id="title-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-artist">Artist *</label>
+                    <input type="text" id="edit-artist" required>
+                    <div class="error-message" id="artist-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-album">Album</label>
+                    <input type="text" id="edit-album">
+                </div>
+                <div class="form-group">
+                    <label for="edit-duration">Duration (MM:SS) *</label>
+                    <input type="text" id="edit-duration" placeholder="e.g., 3:45" required>
+                    <div class="error-message" id="duration-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="edit-audio-url">Audio URL *</label>
+                    <input type="url" id="edit-audio-url" placeholder="https://example.com/song.mp3" required>
+                    <div class="error-message" id="url-error"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" id="cancel-edit" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content share-modal">
+            <span class="close-modal">&times;</span>
+            <h2>Share Your Playlist</h2>
+            <p>Copy the link below to share your playlist with others:</p>
+            <div class="share-link-container">
+                <input type="text" id="share-link" readonly>
+                <button id="copy-link-btn">Copy Link</button>
+            </div>
+            <div id="copy-message"></div>
+            <p class="share-note">Note: Recipients will see the songs in your playlist, but will need to search for them again to play.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Music Playlist Organizer. All rights reserved.</p>
+            <div class="student-info">
+                <p><strong>Student:</strong> Hamdi Cabdrizaak Maxamuud</p>
+                <p><strong>ID:</strong> C5240006 | <strong>Class:</strong> CM241</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
